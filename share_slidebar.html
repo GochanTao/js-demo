@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	body{padding:0px; margin:0px}
+	#div1{width:100px; height:200px; background:#c0c0c0; position:absolute; left:0px; top:100px}
+	#div1 span{ height:60px; line-height:20px; background:#ffff00; position:absolute; left:100px; top:70px}
+	#div1 ul{list-style-type:none; padding:20px 20px; position:absolute; left:0px; }
+	#div1 ul li a{text-decoration:none; line-height:30px}
+	#div1 ul li a:hover{text-decoration:underline; color:red}
+</style>
+<script>
+
+var timer=null;
+function startMove(target) 
+{
+	
+	var oDiv=document.getElementById("div1");
+		
+	clearInterval(timer);
+	timer=setInterval(function()
+	{
+		var speed=0;
+		if(oDiv.offsetLeft<target)
+		{
+			speed=10;
+		}
+		else
+		{
+			speed=-10;
+		}
+		if(oDiv.offsetLeft==target)
+		{
+			clearInterval(timer);
+		}
+		else
+		{
+			oDiv.style.left=oDiv.offsetLeft+speed+"px";
+		}
+	},30);
+
+}
+window.onload=function()
+{
+	var oDiv=document.getElementById("div1")
+	oDiv.onmouseover=function()
+	{
+		startMove(0);
+	}
+	oDiv.onmouseout=function()
+	{
+		startMove(-100);
+	}
+}
+</script>
+</head>
+<body>
+<div id="div1">
+	<ul>
+		<li><a href="#">微博</li>
+		<li><a href="#">朋友圈</li>
+		<li><a href="#">QQ空间</li>
+	</ul>
+	<span>分享到</span>
+
+</div>
+</body>
+</html>
